@@ -4,6 +4,7 @@ const path = require('path');
 const cookieParser = require('cookie-parser');
 const logger = require('morgan');
 const sassMiddleware = require('node-sass-middleware');
+const babelify = require(path.resolve('middleware/babelify'));
 
 const indexRouter = require('./routes/index');
 const usersRouter = require('./routes/users');
@@ -25,6 +26,7 @@ app.use(sassMiddleware({
   sourceMap: true
 }));
 app.use(express.static(path.join(__dirname, 'public')));
+app.use('/js', babelify(`${__dirname}/public/javascripts`, babelify.browserifySettings, {presets: ['@babel/preset-env']}));
 
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
