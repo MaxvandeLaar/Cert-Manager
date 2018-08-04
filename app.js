@@ -5,15 +5,39 @@ const cookieParser = require('cookie-parser');
 const logger = require('morgan');
 const sassMiddleware = require('node-sass-middleware');
 const babelify = require(path.resolve('middleware/babelify'));
-
+const layoutVars = require(path.resolve('middleware/layoutVars'));
+const expressLayouts = require('express-ejs-layouts');
+const i18n = require('i18n');
 const indexRouter = require('./routes/index');
 const usersRouter = require('./routes/users');
+const Loki = require('lokijs');
+const db = new Loki('ExpressPlugableRoutes');
 
 const app = express();
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'ejs');
+i18n.configure({
+    locales: ['nl', 'en'],
+    directory: path.join(__dirname, 'locales'),
+    defaultLocale: 'nl',
+    cookie: 'language',
+    queryParameter: 'lang',
+    api: {
+        __: 'i18n',  // now req.__ becomes req.t
+        __n: 'i18ns' // and req.__n can be called as req.tn
+    },
+    objectNotation: true
+});
+app.use(i18n.init);
+// db.loadDatabase({}, () => {
+//
+// });
+
+app.use(layoutVars);
+
+app.use(expressLayouts);
 
 app.use(logger('dev'));
 app.use(express.json());
@@ -27,6 +51,8 @@ app.use(sassMiddleware({
 }));
 app.use(express.static(path.join(__dirname, 'public')));
 app.use('/js', babelify(`${__dirname}/public/javascripts`, babelify.browserifySettings, {presets: ['@babel/preset-env']}));
+app.use('/libs/jquery', express.static(path.resolve('node_modules/jquery/dist/jquery.js')));
+app.use('/libs/foundation', express.static(path.resolve('node_modules/foundation-sites/dist')));
 
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
