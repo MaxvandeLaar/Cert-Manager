@@ -1,0 +1,10 @@
+@import "colors";
+
+.navigation-container{
+    min-height: 55px;
+}
+
+.empty-top-bar{
+    height: 55px;
+    background-color: $secondary-color;
+}

@@ -1,2 +1,21 @@
 <%- contentFor('body')%>
-Testing hello
+<div class="grid-container">
+
+    <div class="grid-x grid-margin-x small-up-2 medium-up-2 large-up-4" data-equalizer="cell">
+        <% plugins.forEach(plugin => { %>
+        <div class="cell">
+            <div class="card" data-equalizer-watch="cell">
+                <div class="card-main">
+                    <a href="<%= plugin.path %>"><img vibrant src="<%= plugin.thumbnail?plugin.thumbnail:'https://picsum.photos/200?random='+plugin.title %>"></a>
+                    <div class="card-title-container">
+                        <h4><a href="<%= plugin.path %>"><%= plugin.title %></a></h4>
+                    </div>
+                </div>
+                <div class="card-section">
+                    <p><%= plugin.description %></p>
+                </div>
+            </div>
+        </div>
+        <% }); %>
+    </div>
+</div>
