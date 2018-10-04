@@ -1,0 +1,47 @@
+<%- contentFor('body') %>
+<link rel="stylesheet" href="libs/dropzone/dropzone.css"/>
+<link rel="stylesheet" type="text/css" href="vendors/DataTables/datatables.min.css"/>
+<script src="libs/dropzone/dropzone.js" type="application/javascript"></script>
+<script type="text/javascript" src="vendors/DataTables/datatables.min.js"></script>
+<script src="js/main.js" type="application/javascript"></script>
+<div class="grid-container fluid">
+    <div class="grid-y grid-margin-y">
+        <div class="cell">
+            <div id="file-uploader" class="dropzone" data-url="<%= path %>"></div>
+        </div>
+        <div class="cell">
+            <div class="grid-x">
+                <div class="cell medium-4">
+                    <form autocomplete="off">
+                        <div class="input-group">
+                            <span class="input-group-label"><i class="fas fa-key"></i></span>
+                            <input class="input-group-field" id="password" type="password"/>
+                            <div class="input-group-button">
+                                <button type="button" id="toggle-password" class="button"><i id="eye-show" class="far fa-eye"></i><i id="eye-hide" class="far fa-eye-slash" style="display:none;"></i></button>
+                            </div>
+                        </div>
+                        <p class="help-text" id="passwordHelpText">Enter password before uploading the file!</p>
+                    </form>
+                </div>
+            </div>
+        </div>
+        <div class="cell">
+            <table id="info-table" class="display" style="width:100%">
+                <thead>
+                <tr>
+                    <th>Common Name</th>
+                    <th>Expires</th>
+                    <th>Organisation</th>
+                    <th>Email</th>
+                    <th>City</th>
+                    <th>State</th>
+                    <th>Country</th>
+                    <th>Issuer</th>
+                </tr>
+                </thead>
+                <tbody>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
