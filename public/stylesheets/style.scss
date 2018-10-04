@@ -1,38 +1,36 @@
 @import "partials/colors.scss";
 @include foundation-everything;
+@import "partials/responsive-sticky-menu";
 
 body {
   padding: 0;
   background: $white;
 }
 
-@import "partials/sideBar";
+.app-dashboard {
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
 
+.app-dashboard-body {
+  flex: 1 1 auto;
+  display: flex;
+}
+
+@import "partials/sideBar";
+//
 @import "partials/navigation";
 
-.content-container{
-  padding:15px;
+.app-dashboard-body-content {
+  transition: all $offcanvas-transition-length $offcanvas-transition-timing;
+  overflow-y: auto;
+  flex: 1 1 0;
+  padding: 20px ;
+  background-color: $white;
 
-  .card {
-    .card-main {
-      position:relative;
-
-      .card-title-container {
-        position: absolute;
-        background-color: rgba(34, 45, 50, 0.9);
-        width: 100%;
-        top: 1em;
-        padding-left: 0.5em;
-
-        a {
-          color:$light;
-        }
-
-        a:hover {
-          color:$white;
-        }
-      }
-
-    }
+  @media print, screen and (min-width: 40em){
+    margin-left:16.6667% !important;
   }
+
 }

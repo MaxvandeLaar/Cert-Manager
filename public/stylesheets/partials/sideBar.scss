@@ -1,25 +1,25 @@
 @import "colors";
 
-.sidebar-container{
+.app-dashboard-sidebar {
     background-color: $white;
+    height: 100%;
+    overflow-x: visible;
+    overflow-y: auto;
+
+    z-index: 1;
+    transition: all $offcanvas-transition-length $offcanvas-transition-timing;
+
+    width: 16.66667% !important;
+
     box-shadow: 0 0 10px rgba(10, 10, 10, 1);
 
-    .title-container {
-        background-color:$secondary-color;
-        min-height: 55px;
-        max-height: 55px;
-
-        .title {
-            padding-top:0.2em;
+    .app-dashboard-sidebar-inner {
+        height: 100%;
+        overflow-x: hidden;
+        overflow-y: auto;
+        .menu > li > a {
+            align-items: center;
         }
-    }
-
-    .title > a {
-        color: $white;
-    }
-    .title > a:hover{
-        color:$white;
-        text-decoration: underline;
     }
 
     .menu {
@@ -28,6 +28,7 @@
         }
         a:hover {
             color:$white;
+            //text-shadow: 0 0 2px $black;
         }
         li:hover {
             background-color: $light;
@@ -41,4 +42,28 @@
             }
         }
     }
+
+    @media print, screen and (max-width: 40em){
+        width: 250px !important;
+    }
 }
+
+.nav-bar-left {
+    background-color:$secondary-color;
+    padding-left:1em;
+    //padding-bottom: 1em;
+
+    .title > a {
+        color: $white;
+    }
+    .title > a:hover{
+        color:$white;
+        //text-decoration: underline;
+        text-shadow:0 0 10px $black;
+    }
+
+    @media print, screen and (max-width: 40em){
+        text-align: center !important;
+    }
+}
+

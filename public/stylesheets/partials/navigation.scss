@@ -1,10 +1,23 @@
 @import "colors";
 
-.navigation-container{
-    min-height: 55px;
-}
+//.navigation-container{
+//    min-height: 55px;
+//}
 
 .empty-top-bar{
-    height: 55px;
+    //height: 55px;
     background-color: $secondary-color;
+}
+
+.app-dashboard-top-nav-bar  {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: $secondary-color;
+    height: 55px;
+    width: 100%;
+    flex: 0 0 55px;
+    .menu-icon {
+        vertical-align: text-bottom;
+    }
 }

@@ -33,11 +33,17 @@ module.exports = async function(req, res, next) {
             path:reqPath
         });
 
-        if (!options.navigation){
-            options.navigation = `<div class="empty-top-bar"></div>`;
+        if (!options.nav){
+            options.nav = '';
+        }
+        if (!options.navRight){
+            options.navRight = '';
+        }
+        if (!options.head){
+            options.head = '';
         }
         if (!options.title){
-            options.title = "";
+            options.title = '';
         }
 
         _render.call(this, view, options, callback);

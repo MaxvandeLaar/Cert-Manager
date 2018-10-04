@@ -1,0 +1,28 @@
+@import "partials/colors";
+
+.content-container{
+    //padding:15px;
+
+    .card {
+        .card-main {
+            position:relative;
+
+            .card-title-container {
+                position: absolute;
+                background-color: rgba(34, 45, 50, 0.9);
+                width: 100%;
+                top: 1em;
+                padding-left: 0.5em;
+
+                a {
+                    color:$light;
+                }
+
+                a:hover {
+                    color:$white;
+                }
+            }
+
+        }
+    }
+}
